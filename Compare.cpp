@@ -4,7 +4,11 @@
 
 //the constructor will call all of the methodw
 Compare::Compare(Pixel[] & iris1, Pixel[] & iris2) {
-
+	equalize_Arrays();
+	correct_Brightness_Differences();
+	color_differences = find_Pattern_Differences();
+	find_Percent_Similarity();
+	is_same_person();
 }
 
 
@@ -34,11 +38,12 @@ void Compare::equalize_Arrays() {
 	else {
 		iris2 = bigger_Array;
 	}
+	return;
 }
 
 
-double Compare::find_Brightness_Differences() {
-
+void Compare::correct_Brightness_Differences() {
+	return;
 }
 
 //returns an inte difference for each pixel in the arrays
@@ -46,20 +51,33 @@ std::vector<int> Compare::find_Pattern_Differences() {
 	std::vector<int> result;
 	for (int i = 0; i < iris1.size(); i++) {
 		int diff_1, diff_2, diff_3;
-		diff_1 = iris1[i].getR() - iris2[i].getR();
-		diff_2 = iris1[i].getG() - iris2[i].getG();
-		diff_3 = iris1[i].getB() - iris2[i].getB();
+		diff_1 = abs(iris1[i].getR() - iris2[i].getR());
+		diff_2 = abs(iris1[i].getG() - iris2[i].getG());
+		diff_3 = abs(iris1[i].getB() - iris2[i].getB());
 		result[i] = diff_1 + diff_2 + diff_3; 
 	}
 	return result; 
 }
 
 
-double Compare::find_Percent_Similarity() {
-
+void Compare::find_Percent_Similarity() {
+	const double MAX_DIFF_VALUE = 3 * 252;
+	double result;
+	std::vector<double> percent_color_diff;
+	for (int i = 0; i < color_differences.size(); i++) {
+		percent_color_diff[i] = color_differences[i] / MAX_DIFF_VALUE;
+		result += percent_color_diff[i];
+	}
+	percent_color_difference = result/percent_color_diff.size();
+	return;
 }
 
 
-bool Compare::is_same_person() {
-
+void Compare::is_same_person() {
+	//10% is arbitrary, we can change it depending on how our tests go
+	if (percent_color_difference > 0.10 ) {
+		is_same = true;
+	}
+	else is_same = false;
+	return;
 }
