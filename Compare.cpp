@@ -2,12 +2,26 @@
 #include <iterator>
 #include <math.h>
 
-//the constructor will call all of the methodw
+//the constructor will call all of the methods
 Compare::Compare(Pixel[] & iris1, Pixel[] & iris2) {
+
+	/* adjusts sizes of arrays to be
+	proportionally equal to the smallest array */
 	equalize_Arrays();
+
+	/* equalise brightness difference in image arrays due to exposures
+	abnormalities*/
 	correct_Brightness_Differences();
+
+	/* TODO this gonna change when akis fixes stuff */
 	color_differences = find_Pattern_Differences();
+
+	/* main authentication function to find degree of eye similarity to
+	"control" */
 	find_Percent_Similarity();
+
+	/* function to determine if the eyes are similar -- the boolean is a
+	data field called is_same */
 	is_same_person();
 }
 
@@ -54,9 +68,9 @@ std::vector<int> Compare::find_Pattern_Differences() {
 		diff_1 = abs(iris1[i].getR() - iris2[i].getR());
 		diff_2 = abs(iris1[i].getG() - iris2[i].getG());
 		diff_3 = abs(iris1[i].getB() - iris2[i].getB());
-		result[i] = diff_1 + diff_2 + diff_3; 
+		result[i] = diff_1 + diff_2 + diff_3;
 	}
-	return result; 
+	return result;
 }
 
 
