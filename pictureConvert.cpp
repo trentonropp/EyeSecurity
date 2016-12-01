@@ -15,46 +15,89 @@ using namespace std;
     }
 
 
-    vector <vector<rgb> > PictureConvert::PixelArray(string filename) {
+vector <vector<Pixel> >pictureConvert::decodeOneStep(const char* filename)
+{
+    
+    
 
-        GBufferedImage img;
-        img.load(filename);
+    
+    std::vector<unsigned char> image; //the raw pixels
+    unsigned width, height;
+    
+    
+    
+    //decode
+    unsigned error = lodepng::decode(image, width, height, filename);
+    
+    const int x= width;
+    const int y= height;
 
-        GRectangle x = img.getBounds();
-        int height = (int) x.getHeight();
-        int width = (int) x.getWidth();
-        vector <vector<rgb> > array[height][width];
-        rgb pixel();
-
-        for(int i = 0; i < height; i++){
-            for(int j = 0; J<width; j++){
-
-                array[i][j]=pixel.colorConverter(img.getRGB(i,j));;
-
-            }
-
+    //vector to hold Pixels before combining into a 2d array.
+    vector<Pixel> tempArray;
+    tempArray.resize(x*y,Pixel());
+    
+    //vector to be returned
+    vector <vector<Pixel> >  array;
+    
+    //make the right size
+    array.resize(y,vector<Pixel>(x,Pixel()));
+    
+    //if there's an error, display it
+    if(error) std::cout << "decoder error " << error << ": " << lodepng_error_text(error) << std::endl;
+    
+    //the pixels are now in the vector "image", 4 bytes per pixel, ordered RGBARGBA..., use it as texture, draw it, ...
+    clock_t t1,t2;
+    t1=clock();
+ 
+    for(unsigned long int i = 0, j = 0; i < width*height && j < height; j++, i++){
+        
+        if((i+1)%4==1){
+            tempArray[j].setRed(image[i]);
+            
+            i++;
         }
-
-        return array;
+        if((i+1)%4==2){
+            tempArray[j].setGreen(image[i]);
+            i++;
+        }
+        if((i+1)%4==3){
+            tempArray[j].setBlue(image[i]);
+            i++;
+        }
+        
     }
-/*
+
+    
+   
+    //this method puts the 1d vector into 2d
+    for (int i = 0, j = 0; i< width*height && j < height; i++) {
+        array[j][i%width] = tempArray[i];
+        
+        if((i+1)%width==0){
+            j++;
+        }
+    }
+    
+    
+    t2=clock();
+    float diff ((float)t2-(float)t1);
+    std::cout<<"Time Taken to decode: "<<diff/CLOCKS_PER_SEC<< " seconds" <<std::endl;
+    
+    
+    
+    
+    
+    
+    return array;
+    
+    
+}
 
 int main(){
-
-    string file = "Iris.jpg";
-    pictureConvert a;
-    vector< vector <rgb> > vector1 = a.PixelArray(file);
-
-    for (int i = 0; i < vector1.size(); ++i) {
-        for (int j = 0; j < vector1[i].size(); ++j) {
-            cout<<"(Red =  "<< vector1[i][j].getRed() << ", Green = " << vector1[i][j].getGreen() << ", Blue= " <<
-                vector1[i][j].getBlue() << ")"<< endl;
-        }
-
-    }
-
-
-
-
+    
+    
+    
+    
 }
-*/
+
+

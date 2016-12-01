@@ -1,13 +1,15 @@
 #include <vector>
+#include "Pixel.h"
+#include <iostream>
 
+using namespace std;
 class Parser {
+
 private:
-	int pupil_X;
-	int pupil_Y;
-	int pupil_Z;
-	Pixel[][] pic;
-	std::vector<int> find_Pupil();
+
+    vector<vector<Pixel> > picture;
+    vector<int> find_Pupil();
 public:
-	Parser(Pixel[][] &pic);
-	*Pixel[] get_Iris_Array(int x, int y, int radius);
+	Parser(vector <vector<Pixel> > &pic);
+    vector <Pixel> get_Iris_Array(int x, int y, int radius);
 };
