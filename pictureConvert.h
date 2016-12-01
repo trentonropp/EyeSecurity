@@ -6,14 +6,17 @@
 #define PROJECT_PICTURECONVERT_H
 
 #include <vector>
-#include "StanfordCPPLib/graphics/gbufferedimage.h"
-#include "StanfordCPPLib/private/init.h"
+#include "Pixel.h"
+#include <string>
+#include "lodepng.h"
+#include <iostream>
+
+using namespace std;
 
 class pictureConvert {
 
     pictureConvert();
-
-    vector<vector<rgb> > PixelArray(string filename);
+    vector <vector<Pixel> >decodeOneStep(const char* filename);
 
 };
 

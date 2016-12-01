@@ -1,14 +1,30 @@
 #include "Parser.h"
+using namespace std;
 
-Parser::Parser(Pixel[][] &pic) {
 
-}
-
-std::vector<int> Parser::find_Pupil() {
+Parser::Parser(vector <vector<Pixel> > &pic) {
 
 }
 
+vector<int> Parser::find_Pupil() {
+    vector<int> coordinates;
+    
+    
+    
+    
+    
+    return coordinates;
 
-*Pixel[] Parser::get_Iris_Array(int x, int y, int radius) {
+}
+
+
+
+vector<Pixel> Parser::get_Iris_Array(int x, int y, int radius) {
+    vector<Pixel> array;
+    
+    
+    
+    
+    return array;
 
 }

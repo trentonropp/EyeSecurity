@@ -2,13 +2,6 @@
 // Created by Jad Zeineddine on 11/24/16.
 //
 
-#ifndef PROJECT_RGB_H
-#define PROJECT_RGB_H
-#endif //PROJECT_RGB_H
-
-
-#include "StanfordCPPLib/graphics/gbufferedimage.h"
-#include "StanfordCPPLib/private/init.h"
 
 class Pixel {
 
@@ -23,6 +16,21 @@ public:
 
 Pixel colorConverter(int hexValue);
 
+    void setRed(int x){
+        red=x;
+    }
+    
+    
+    void setGreen(int x){
+        green=x;
+    }
+    
+    void setBlue(int x){
+        blue=x;
+    }
+    
+    
+    
     int getRed();
 
     int getBlue();

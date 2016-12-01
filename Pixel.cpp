@@ -15,6 +15,7 @@ Pixel Pixel::colorConverter(int hexValue)
 }
 
 
+
 int Pixel::getRed(){
 return red;
 }
@@ -43,14 +44,3 @@ Pixel::Pixel() {
     blue=0;
 
 }
-
-using namespace std;
-
-int main(){
-
-    cout<< "hello "<< endl;
-
-    return 0;
-}
-
-
