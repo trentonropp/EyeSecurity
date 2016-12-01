@@ -44,3 +44,7 @@ Pixel::Pixel() {
     blue=0;
 
 }
+
+int main(){
+  return 0;
+}
