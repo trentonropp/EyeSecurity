@@ -2,9 +2,9 @@
 #include <iterator>
 #include <math.h>
 
-//the constructor will call all of the methodw
-Compare::Compare(Pixel[] & iris1, Pixel[] & iris2) {
-
+//the constructor will call all of the methods
+Compare::Compare(std::vector<Pixel> iris1, std::vector<Pixel> iris2) {
+	Cut_Array_Ends();
 	equalize_Arrays();
 	correct_Brightness_Differences();
 	color_differences = find_Pattern_Differences();
@@ -13,7 +13,28 @@ Compare::Compare(Pixel[] & iris1, Pixel[] & iris2) {
 }
 
 
+void Compare::Cut_Array_Ends() {
+	int size1 = iris1.size();
+	int size2 = iris2.size();
+	double size1_cut_amt = (double)size1 / 40;
+	double size2_cut_amt = (double)size2 / 40;
 
+	for (int i = 0; i < size1_cut_amt; i++) {
+		iris1.erase(iris1.begin());
+	}
+	for (int i = 0; i < size1_cut_amt; i++) {
+		iris1.erase(iris1.end());
+	}
+
+	for (int i = 0; i < size2_cut_amt; i++) {
+		iris2.erase(iris2.begin());
+	}
+	for (int i = 0; i < size2_cut_amt; i++) {
+		iris2.erase(iris2.end());
+	}
+
+	return;
+}
 
 void Compare::equalize_Arrays() {
 	std::vector<Pixel> bigger_Array;
@@ -33,7 +54,8 @@ void Compare::equalize_Arrays() {
 	int diff = bigger_Array.size() - smaller_Array.size();
 	int jump_size = bigger_Array.size() / diff;
 
-	for (int i = 0; i < bigger_Array.size(); i++) {
+	int size = bigger_Array.size();
+	for (int i = 0; i < size; i++) {
 		if (i % jump_size == 0) {
 			bigger_Array.erase(bigger_Array.begin() + i);
 		}
