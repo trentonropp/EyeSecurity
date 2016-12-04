@@ -6,17 +6,21 @@
 #define PROJECT_PICTURECONVERT_H
 
 #include <vector>
-#include "Pixel.h"
 #include <string>
 #include "lodepng.h"
 #include <iostream>
 
+
+#include "Pixel.h"
+
+
 using namespace std;
 
 class pictureConvert {
-
+public:
     pictureConvert();
     vector <vector<Pixel> >decodeOneStep(const char* filename);
+    void display(vector<vector<Pixel> > picture );
 
 };
 
