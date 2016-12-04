@@ -12,7 +12,9 @@ Compare::Compare(std::vector<Pixel> iris1, std::vector<Pixel> iris2) {
 	is_same_person();
 }
 
-
+/*
+this method will cut the array sizes down by a specific percentage
+*/
 void Compare::Cut_Array_Ends() {
 	int size1 = iris1.size();
 	int size2 = iris2.size();
