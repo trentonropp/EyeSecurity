@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include "Pixel.h"
 
 class Compare {
 private:

@@ -18,8 +18,8 @@ this method will cut the array sizes down by a specific percentage
 void Compare::Cut_Array_Ends() {
 	int size1 = iris1.size();
 	int size2 = iris2.size();
-	double size1_cut_amt = (double)size1 / 40;
-	double size2_cut_amt = (double)size2 / 40;
+	double size1_cut_amt = (double)size1 / 20;
+	double size2_cut_amt = (double)size2 / 20;
 
 	for (int i = 0; i < size1_cut_amt; i++) {
 		iris1.erase(iris1.begin());
@@ -148,8 +148,8 @@ void Compare::find_Percent_Similarity() {
 
 
 void Compare::is_same_person() {
-	//10% is arbitrary, we can change it depending on how our tests go
-	if (percent_color_difference > 0.10 ) {
+	//40% is arbitrary, we can change it depending on how our tests go
+	if (percent_color_difference > 0.40 ) {
 		is_same = true;
 	}
 	else is_same = false;

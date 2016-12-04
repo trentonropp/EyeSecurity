@@ -105,6 +105,34 @@ vector <vector<Pixel> >pictureConvert::decodeOneStep(const char* filename)
 
 }
 
+<<<<<<< HEAD
+int main(){
+
+
+		string filename1 = "picture1";
+		string filename2 = "picture2";
+
+		vector<vector<Pixel> > a = decodeOneStep(filename1);
+		vector<vector<Pixel> > b = decodeOneStep(filename2);
+
+		Parser pa1(a);
+		Parser pa2(b);
+
+		vector<Pixel> array2 = pa1.getIrisArray();
+		vector<Pixel> array3 = pa2.getIrisArray();
+
+		//compare stuff
+
+
+		Compare c = new Compare(array2, arry3);
+
+
+
+
+
+
+
+=======
 void pictureConvert::display(vector<vector<Pixel> > picture ){
     int height  = picture.size();
     int width = picture[0].size();
@@ -128,6 +156,7 @@ void pictureConvert::display(vector<vector<Pixel> > picture ){
     system("open pic.ppm");
     return;
 
+>>>>>>> origin/master
 }
 
 
