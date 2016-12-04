@@ -1,0 +1,30 @@
+#include "eyeLibrary.h"
+
+//default constructor for eyeLibrary class.
+
+eyeLibrary::eyeLibrary() {
+
+}
+//inputPicture function takes in a file name and converts the uploaded file picture and assigns it into a 2D vector of type Pixel.
+
+//the created 3D vector library pushs a 2D Pixel vector (the actually picture file) every time this function is called.
+
+void eyeLibrary::inputPicture(string filename) {
+
+	vector < vector <Pixel> > a = decodeOneStep(filename);
+	
+
+	library.push_back(a);
+
+}
+
+//getPicture class traverses through the 3D vector library and returns a requested 2D pixel vector.
+
+//the fucntion takes in an int parameter that specifies which picture needs to be retrieved.
+
+vector < vector <Pixel> > eyeLibrary: getPicture(int x) {
+
+
+	return library[x];
+
+}
