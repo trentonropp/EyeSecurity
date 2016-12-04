@@ -7,8 +7,8 @@ using namespace std;
 class Parser {
 
 private:
-    
-    
+
+
     void makePupilBW();
     vector<int> findPupil();
     vector<int> getWeightedCenter(vector<vector<int> >, int bound);
@@ -34,4 +34,3 @@ public:
 	Parser(vector <vector<Pixel> > &pic);
     vector <Pixel> getIrisArray();
 };
-

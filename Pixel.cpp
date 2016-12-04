@@ -32,7 +32,7 @@ return green;
 //if the Pixel is nearly black but not entirely
 bool Pixel::isPrettyBlack(){
     int variance = 20;
-    
+
     Pixel p=*this;
     if (    abs(  p.getGreen() - p.getBlue()  )<variance    &&   abs(  p.getBlue() - p.getRed()  )<variance  &&  abs(  p.getGreen() - p.getRed()  )<variance   && ( p.getBrightness()<45 )    ) {
     return true;
@@ -47,10 +47,10 @@ bool Pixel::isActuallyBlack(){
     //Pixel p = *this;
     if(getBrightness()<3){
         //cout<< "works"<< endl;
-    
+
     return true;
     }
-    
+
     else {
         return false;
     }
@@ -58,7 +58,7 @@ bool Pixel::isActuallyBlack(){
 
 bool Pixel::isPrettyWhite(){
     int variance = 50;
-    
+
     Pixel p=*this;
     if (    abs(  p.getGreen() - p.getBlue()  )<variance    &&   abs(  p.getBlue() - p.getRed()  )<variance  &&  abs(  p.getGreen() - p.getRed()  )<variance   && ( p.getBrightness()>70)    ) {
         return true;
@@ -69,7 +69,7 @@ bool Pixel::isPrettyWhite(){
 
 bool Pixel::isPrettySclera(){
     int variance = 5;
-    
+
     Pixel p=*this;
     if (    (p.getRed()-p.getGreen())> variance && (p.getRed()-p.getBlue()) >variance && ( p.getBrightness()>65)    ) {
         return true;
@@ -86,7 +86,7 @@ void Pixel::makeBlack(){
 }
 
 void Pixel::makeWhite(){
-    
+
     this->red=255;
     this->blue=255;
     this->green=255;
@@ -94,12 +94,12 @@ void Pixel::makeWhite(){
 
 
 void Pixel::brighten(Pixel &x, double factor){
-    
+
     factor = 1/factor;
     x.red=(int)((double)x.red*factor);
     x.blue=(int)((double)x.blue*factor);
     x.green= (int)((double)x.green*factor);
-    
+
     return;
 }
 
