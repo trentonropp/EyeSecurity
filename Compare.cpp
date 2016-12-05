@@ -103,7 +103,7 @@ void Compare::correct_Brightness_Differences() {
 	int comparison_percentage;
 	int pixel_avg;
 	bool is_same_color = false;
-	for (int i = 0; i < iris1.size(); i++) {
+	for (int i = 0; i < iris1.size() - 1; i++) {
 		comparison = Compare_Pixel_Brightness(iris1[i], iris2[i]);
 		if (is_brightness_diff(comparison[0], comparison[1], comparison[2])) {
 			is_same_color = true;
