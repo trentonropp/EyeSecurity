@@ -1,13 +1,21 @@
+#ifndef PIXEL_H
+#define PIXEL_H
+
 //
 // Created by Jad Zeineddine on 11/24/16.
 //
 
 
+#pragma once
+#include <cmath>
+#include <iostream>
+#include <stdlib.h>
+
 class Pixel {
 
 private:
 
-    int red;
+    int red=0;
     int green;
     int blue;
 
@@ -29,7 +37,17 @@ Pixel colorConverter(int hexValue);
         blue=x;
     }
     
+    bool isPrettyBlack();
     
+    bool isPrettySclera();
+    
+    bool isActuallyBlack();
+    
+    
+    bool isPrettyWhite();
+    
+    void makeBlack();
+    void makeWhite();
     
     int getRed();
 
@@ -38,9 +56,14 @@ Pixel colorConverter(int hexValue);
 
     int getGreen();
 
+    int getBrightness();
+
+    void brighten(Pixel &x, double factor);
 
     Pixel(int r, int g, int b);
 
     Pixel();
 
 };
+
+#endif

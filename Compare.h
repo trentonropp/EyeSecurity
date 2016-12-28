@@ -1,5 +1,11 @@
+#ifndef COMPARE_H
+#define COMPARE_H
+#pragma once
 #include <vector>
 #include <iostream>
+
+
+#include "Pixel.h"
 
 class Compare {
 private:
@@ -14,6 +20,8 @@ private:
 	void find_Percent_Similarity();
 public:
 	Compare(std::vector<Pixel> iris1, std::vector<Pixel> iris2);
-	void is_same_person();
+    bool is_same_person();
 
 };
+
+#endif
